@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Citizen Flood Reporting</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:#0f172a;
+color:white;
+}
+
+header{
+background:#020617;
+padding:15px;
+}
+
+.container{
+padding:30px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+max-width:500px;
+}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:none;
+border-radius:5px;
+}
+
+button{
+background:#38bdf8;
+padding:10px 20px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+.report-list{
+margin-top:30px;
+}
+
+.report{
+background:#1e293b;
+padding:15px;
+border-radius:8px;
+margin-bottom:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h2>Citizen Flood Reporting System</h2>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h3>Report Flooding</h3>
+
+<input placeholder="Location">
+
+<input placeholder="Water Depth (cm)">
+
+<textarea placeholder="Describe flooding"></textarea>
+
+<button>Submit Report</button>
+
+</div>
+
+<div class="report-list">
+
+<h3>Recent Citizen Reports</h3>
+
+<div class="report">
+Location: Lajpat Nagar<br>
+Water Depth: 30 cm<br>
+Status: Verified
+</div>
+
+<div class="report">
+Location: Rohini Sector 14<br>
+Water Depth: 20 cm<br>
+Status: Pending
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

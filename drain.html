@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Smart Drain Monitoring</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:#0f172a;
+color:white;
+}
+
+header{
+background:#020617;
+padding:15px;
+text-align:center;
+}
+
+.container{
+padding:30px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.sensor{
+background:#1e293b;
+padding:25px;
+border-radius:12px;
+text-align:center;
+}
+
+.levelHigh{
+color:red;
+font-size:22px;
+}
+
+.levelMedium{
+color:orange;
+font-size:22px;
+}
+
+.levelLow{
+color:lightgreen;
+font-size:22px;
+}
+
+button{
+margin-top:30px;
+padding:10px 20px;
+background:#38bdf8;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h2>Smart Drain Monitoring System</h2>
+</header>
+
+<div class="container">
+
+<div class="grid">
+
+<div class="sensor">
+<h3>Sensor A12</h3>
+<p>Location: Ward 21</p>
+<div class="levelHigh">85%</div>
+<p>⚠ Overflow Risk</p>
+</div>
+
+<div class="sensor">
+<h3>Sensor B7</h3>
+<p>Location: Sector 14</p>
+<div class="levelMedium">60%</div>
+<p>Moderate Water Level</p>
+</div>
+
+<div class="sensor">
+<h3>Sensor C4</h3>
+<p>Location: Rohini</p>
+<div class="levelLow">30%</div>
+<p>Normal Condition</p>
+</div>
+
+</div>
+
+<center>
+<button onclick="window.location.href='index.html'">Back to Dashboard</button>
+</center>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Flood Risk Map</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:#0f172a;
+color:white;
+}
+
+header{
+background:#020617;
+padding:15px;
+}
+
+#map{
+height:90vh;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h2>Flood Risk Map – Delhi</h2>
+</header>
+
+<div id="map"></div>
+
+<script>
+
+var map=L.map('map').setView([28.6139,77.2090],11);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+L.marker([28.7041,77.1025]).addTo(map)
+.bindPopup("Ward 21 – High Flood Risk");
+
+L.marker([28.5355,77.3910]).addTo(map)
+.bindPopup("Ward 12 – Moderate Risk");
+
+L.marker([28.4595,77.0266]).addTo(map)
+.bindPopup("Ward 8 – Safe Zone");
+
+</script>
+
+</body>
+</html>

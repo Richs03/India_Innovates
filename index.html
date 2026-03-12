@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Delhi Flood Intelligence System</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:#0f172a;
+color:white;
+}
+
+header{
+background:#020617;
+padding:15px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+header h1{
+margin:0;
+color:#38bdf8;
+font-size:22px;
+}
+
+.container{
+display:grid;
+grid-template-columns:220px 1fr;
+height:100vh;
+}
+
+.sidebar{
+background:#020617;
+padding:20px;
+}
+
+.sidebar h2{
+color:#38bdf8;
+font-size:18px;
+}
+
+.menu a{
+display:block;
+margin:15px 0;
+text-decoration:none;
+color:#94a3b8;
+font-size:15px;
+}
+
+.menu a:hover{
+color:white;
+}
+
+.main{
+padding:20px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+}
+
+.card{
+background:#1e293b;
+padding:15px;
+border-radius:10px;
+text-align:center;
+}
+
+.card h2{
+color:#38bdf8;
+margin:5px 0;
+}
+
+.grid{
+margin-top:15px;
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:15px;
+}
+
+#map{
+height:420px;
+border-radius:10px;
+}
+
+.panel{
+background:#1e293b;
+padding:15px;
+border-radius:10px;
+overflow:auto;
+}
+
+.table{
+width:100%;
+margin-top:5px;
+}
+
+.table td{
+padding:6px;
+font-size:14px;
+}
+
+h3{
+margin-top:12px;
+margin-bottom:5px;
+font-size:16px;
+}
+
+ul{
+padding-left:18px;
+font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Delhi Urban Flood Intelligence Dashboard</h1>
+
+<div>AI Flood Prediction Command Center</div>
+
+</header>
+
+<div class="container">
+
+<div class="sidebar">
+
+<h2>Command Panel</h2>
+
+<div class="menu">
+
+<a href="index.html">Overview</a>
+<a href="floodmap.html">Flood Map</a>
+<a href="rainfall.html">Rainfall Prediction</a>
+<a href="drain.html">Drain Monitoring</a>
+<a href="emergency.html">Emergency Planning</a>
+<a href="citizen.html">Citizen Reports</a>
+
+</div>
+
+</div>
+
+<div class="main">
+
+<div class="cards">
+
+<div class="card">
+<p>Current Rainfall</p>
+<h2>18 mm/hr</h2>
+</div>
+
+<div class="card">
+<p>High Risk Wards</p>
+<h2>9</h2>
+</div>
+
+<div class="card">
+<p>Moderate Risk</p>
+<h2>14</h2>
+</div>
+
+<div class="card">
+<p>Safe Zones</p>
+<h2>30</h2>
+</div>
+
+</div>
+
+<div class="grid">
+
+<div id="map"></div>
+
+<div class="panel">
+
+<h3>Rainfall Forecast</h3>
+
+<canvas id="rainChart"></canvas>
+
+<h3>Ward Readiness</h3>
+
+<table class="table">
+
+<tr>
+<td>Ward 21</td>
+<td style="color:red">High Risk</td>
+</tr>
+
+<tr>
+<td>Ward 12</td>
+<td style="color:orange">Moderate</td>
+</tr>
+
+<tr>
+<td>Ward 8</td>
+<td style="color:lightgreen">Safe</td>
+</tr>
+
+</table>
+
+<h3>Smart Drain Monitoring</h3>
+
+<table class="table">
+
+<tr>
+<td>Drain Sensor A12</td>
+<td style="color:red">Water Level 85%</td>
+</tr>
+
+<tr>
+<td>Drain Sensor B7</td>
+<td style="color:orange">Water Level 60%</td>
+</tr>
+
+<tr>
+<td>Drain Sensor C4</td>
+<td style="color:lightgreen">Water Level 30%</td>
+</tr>
+
+</table>
+
+<h3>AI Recommended Actions</h3>
+
+<ul>
+
+<li>Activate Pump Station – Ward 21</li>
+<li>Clear drainage blockage – Sector 14</li>
+<li>Close road near Yamuna floodplain</li>
+<li>Prepare evacuation route for low elevation areas</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+var map=L.map('map').setView([28.6139,77.2090],11);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+maxZoom:19
+}).addTo(map);
+
+
+var heatPoints=[
+
+[28.7041,77.1025,0.9],
+[28.5355,77.3910,0.7],
+[28.4595,77.0266,0.4],
+[28.6692,77.4538,0.8],
+[28.4089,77.3178,0.6],
+[28.6139,77.2090,0.9]
+
+];
+
+L.heatLayer(heatPoints,{radius:25}).addTo(map);
+
+
+L.marker([28.7041,77.1025]).addTo(map)
+.bindPopup("Ward 21 – High Flood Risk");
+
+L.marker([28.5355,77.3910]).addTo(map)
+.bindPopup("Ward 12 – Moderate Risk");
+
+L.marker([28.4595,77.0266]).addTo(map)
+.bindPopup("Ward 8 – Safe Zone");
+
+
+L.circle([28.7041,77.1025],{
+color:'red',
+fillOpacity:0.3,
+radius:2500
+}).addTo(map);
+
+L.circle([28.5355,77.3910],{
+color:'orange',
+fillOpacity:0.3,
+radius:2500
+}).addTo(map);
+
+L.circle([28.4595,77.0266],{
+color:'green',
+fillOpacity:0.3,
+radius:2500
+}).addTo(map);
+
+
+var route=[
+[28.7041,77.1025],
+[28.6900,77.1500],
+[28.6700,77.2000]
+];
+
+L.polyline(route,{color:"cyan",weight:4}).addTo(map)
+.bindPopup("Emergency Evacuation Route");
+
+
+var rain=L.circleMarker([28.60,77.21],{
+radius:8,
+color:"blue",
+fillOpacity:0.8
+}).addTo(map);
+
+setInterval(function(){
+
+var lat=28.55+Math.random()*0.2
+var lng=77.10+Math.random()*0.2
+
+rain.setLatLng([lat,lng])
+
+},1200);
+
+
+var ctx=document.getElementById('rainChart');
+
+new Chart(ctx,{
+type:'line',
+data:{
+labels:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+datasets:[{
+label:"Rainfall Forecast (mm)",
+data:[12,25,40,65,42,18,10],
+borderColor:"#38bdf8"
+}]
+},
+options:{
+plugins:{legend:{labels:{color:"white"}}},
+scales:{
+x:{ticks:{color:"white"}},
+y:{ticks:{color:"white"}}
+}
+}
+});
+
+</script>
+
+</body>
+</html>

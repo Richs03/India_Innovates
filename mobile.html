@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Flood Alert Mobile</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:#0f172a;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.phone{
+width:320px;
+height:600px;
+background:#020617;
+border-radius:30px;
+padding:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+.header{
+text-align:center;
+color:#38bdf8;
+margin-bottom:15px;
+}
+
+.card{
+background:#1e293b;
+padding:15px;
+border-radius:10px;
+margin-bottom:12px;
+}
+
+input,textarea{
+width:100%;
+padding:8px;
+margin:6px 0;
+border:none;
+border-radius:6px;
+}
+
+button{
+background:#38bdf8;
+border:none;
+padding:8px 12px;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.alert{
+background:red;
+padding:8px;
+border-radius:6px;
+text-align:center;
+margin-bottom:10px;
+}
+
+.safe{
+background:green;
+padding:8px;
+border-radius:6px;
+text-align:center;
+margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="phone">
+
+<div class="header">
+<h3>Flood Alert App</h3>
+</div>
+
+<div class="alert">
+⚠ High Flood Risk Nearby
+</div>
+
+<div class="card">
+<h4>Current Location</h4>
+Delhi – Ward 21
+<br>
+Rainfall: 45 mm/hr
+</div>
+
+<div class="card">
+<h4>Report Flood</h4>
+
+<input placeholder="Location">
+
+<input placeholder="Water depth (cm)">
+
+<textarea placeholder="Describe situation"></textarea>
+
+<button>Submit Report</button>
+
+</div>
+
+<div class="card">
+<h4>Emergency Contacts</h4>
+
+Disaster Helpline: 1070  
+Ambulance: 102  
+Police: 100
+
+</div>
+
+<div class="safe">
+Safe Route: Ring Road → AIIMS
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Rainfall Prediction</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:#0f172a;
+color:white;
+}
+
+header{
+background:#020617;
+padding:15px;
+text-align:center;
+}
+
+.container{
+padding:30px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin-bottom:30px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+text-align:center;
+}
+
+.card h2{
+color:#38bdf8;
+margin:5px 0;
+}
+
+.chartBox{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+max-width:800px;
+margin:auto;
+}
+
+button{
+margin-top:20px;
+padding:10px 20px;
+background:#38bdf8;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h2>Hyper-Local Rainfall Prediction</h2>
+</header>
+
+<div class="container">
+
+<div class="cards">
+
+<div class="card">
+<p>Current Rainfall</p>
+<h2>18 mm/hr</h2>
+</div>
+
+<div class="card">
+<p>Forecast Peak</p>
+<h2>65 mm</h2>
+</div>
+
+<div class="card">
+<p>Cloud Intensity</p>
+<h2>High</h2>
+</div>
+
+</div>
+
+<div class="chartBox">
+<canvas id="rainChart"></canvas>
+</div>
+
+<br>
+<center>
+<button onclick="window.location.href='index.html'">Back to Dashboard</button>
+</center>
+
+</div>
+
+<script>
+
+var ctx=document.getElementById('rainChart');
+
+new Chart(ctx,{
+type:'line',
+data:{
+labels:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+datasets:[{
+label:"Rainfall Forecast (mm)",
+data:[12,25,40,65,42,18,10],
+borderColor:"#38bdf8",
+backgroundColor:"rgba(56,189,248,0.2)",
+fill:true
+}]
+},
+options:{
+plugins:{legend:{labels:{color:"white"}}},
+scales:{
+x:{ticks:{color:"white"}},
+y:{ticks:{color:"white"}}
+}
+}
+});
+
+</script>
+
+</body>
+</html>
